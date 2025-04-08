@@ -2,10 +2,10 @@
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import CreateModal from './create.modal';
-import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useState } from 'react';
+import UpdateModal from './update.modal';
 
 interface IProps {
     blogs: IBlog[]
@@ -14,6 +14,7 @@ function DarkExample(props: IProps) {
     const { blogs } = props;
 
     const [showModalCreate, setShowModalCreate] = useState<boolean>(false);
+    const [updateModal, setUpdateModal] = useState<boolean>(false);
     return (
         <>
             <div
@@ -41,7 +42,7 @@ function DarkExample(props: IProps) {
                                 <td>{blog.author}</td>
                                 <td>
                                     <Button>view</Button>
-                                    <Button variant='warning' className='mx-3'>edit</Button>
+                                    <Button variant='warning' className='mx-3' onClick={() => setUpdateModal(true)}>edit</Button>
                                     <Button variant='danger'>delete</Button>
 
                                 </td>
@@ -56,6 +57,10 @@ function DarkExample(props: IProps) {
             <CreateModal
                 showModalCreate={showModalCreate}
                 setShowModalCreate={setShowModalCreate} />
+            <UpdateModal
+                updateModal={updateModal}
+                setUpdateModal={setUpdateModal}
+            />
         </>
     );
 }

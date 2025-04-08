@@ -8,12 +8,12 @@ import { mutate } from "swr"
 import axios from "axios";
 
 interface Iprops {
-    showModalCreate: boolean,
-    setShowModalCreate: (v: boolean) => void;
+    updateModal: boolean,
+    setUpdateModal: (v: boolean) => void;
 }
 
-function CreateModal(props: Iprops) {
-    const { showModalCreate, setShowModalCreate } = props;
+function UpdateModal(props: Iprops) {
+    const { updateModal, setUpdateModal } = props;
     const [title, setTitle] = useState<string>("")
     const [author, setAuthor] = useState<string>("")
     const [content, setContent] = useState<string>("")
@@ -48,12 +48,12 @@ function CreateModal(props: Iprops) {
         setTitle("")
         setAuthor("")
         setContent("")
-        setShowModalCreate(false)
+        setUpdateModal(false)
     }
     return (
         <>
             <Modal
-                show={showModalCreate}
+                show={updateModal}
                 onHide={() => handleCloseModal()}
                 backdrop="static"
                 keyboard={false}
@@ -98,4 +98,4 @@ function CreateModal(props: Iprops) {
     );
 }
 
-export default CreateModal;
+export default UpdateModal;
